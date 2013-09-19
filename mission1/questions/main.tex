@@ -1,0 +1,94 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{palatino}
+\usepackage{wrapfig} 
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{SINF1121 - Groupe 9\\Rapport 1}
+\author{\\Gégo Anthony\\ Gena Xavier \\Joveneau Quentin\\Libioulle Thibault \\Moyaux Arnold\\ Naveau Adrien \\ Payen Marlon}
+\def\blurb{\textsc{Université catholique de Louvain\\
+  École polytechnique de Louvain}}
+\def\clap#1{\hbox to 0pt{\hss #1\hss}}%
+\def\ligne#1{%
+  \hbox to \hsize{%
+    \vbox{\centering #1}}}%
+\def\haut#1#2#3{%
+  \hbox to \hsize{%
+    \rlap{\vtop{\raggedright #1}}%
+    \hss
+    \clap{\vbox{\vfill\centering #2\vfill}}%
+    \hss
+    \llap{\vtop{\raggedleft #3}}}}%
+\begin{document}
+\begin{titlepage}
+\thispagestyle{empty}\vbox to 1\vsize{%
+  \vss
+  \vbox to 1\vsize{%
+    \haut{\includegraphics[scale=0.15]{logo_ucl.pdf}}{\blurb}{\includegraphics[scale=0.4]{logo_epl.jpg}}
+    \vfill
+    \ligne{\Huge \textbf{\textsc{Structures de données\\ et algorithmes (SINF1121)}}}
+    \vspace{5mm}
+    \ligne{\Large \textbf{Mission 1 - Réponses aux questions}}
+    \vspace{5mm}
+    \ligne{\large{-- 25 septembre 2013 --}}
+    %\begin{center}\includegraphics[scale=3]{img/img_couverture.png}\end{center}
+    \vfill
+    \ligne{%
+      \begin{tabular}{c}
+        \textsc{Travail du groupe 9 :}
+      \end{tabular}}
+    \vspace{5mm}
+    \ligne{%
+      \begin{tabular}{lrclr}
+         \textsc{Gégo} Anthony  & 28581100 & \hspace{80pt} & \textsc{Moyau} Arnold & xxxxxx00\\
+         \textsc{Gena} Xavier  & xxxxxx00 & & \textsc{Naveau} Adrien & xxxxxx00\\
+         \textsc{Joveneau} Quentin & xxxxxx00  & & \textsc{Payen} Marlon & xxxxxx00\\
+         \textsc{Libioulle} Thibault & xxxxxx00  & &  & 
+      \end{tabular}
+      }
+    }%
+  \vss
+  }
+\end{titlepage}
+
+\section{Question 1}
+\begin{quotation}
+\textit{Définissez ce qu’est un type abstrait de données (TAD). En java, est-il préférable de décrire un TAD par une classe ou une interface ? Pourquoi ?}
+\end{quotation}
+Un type abstrait de données est un modèle mathématique d'une structure de données spécifiant le type d'informations stockées, les opérations supportées sur ces dernières, ainsi que les types de paramètres des opérations.
+Un TAD spécifie ce que chaque opération fait, mais pas comment elle le fait. On le décrira donc par une interface en java.
+
+\section{Question 2} 
+\begin{quotation}
+\textit{Comment faire pour implémenter une pile par une liste simplement chaînée où les
+opérations push et pop se font en fin de liste ? Cette solution est-elle efficace ?
+Argumentez.}
+
+\end{quotation}
+L'essentiel est de maintenir une référence vers l'objet en fin de liste. Les autres seront liés aux précédents par la structure meme de la liste chainée.
+   L'opération push se réalisera dans tous les cas en O(1). L'opération pop se réalisera dans tous les cas en O(1).
+   On peut donc dire que l'opération est efficace.
+
+\section{Question 3}
+\begin{quotation}
+\textit{En consultant la documentation sur l’API de Java, décrivez l’implémentation
+d’une pile par la classe java.util.Stack. Cette classe peut-elle convenir
+comme implémentation de l’interface Stack2 décrite dans DSAJ-5 ? Pourquoi ?}
+\end{quotation} La classe est implémentée en java au moyen d'un vecteur redimmensionnable. Elle peut convenir si on se limite aux méthodes pop et push. Il n'y a effectivement pas de méthode pour déterminer la taille de la pile.
+
+\section{Question 4}
+\begin{quotation}
+\textit{Proposez une implémentation de la classe DNodeStack. Il s’agit d’une classe
+similaire à NodeStack (décrite dans DSAJ-5) qui propose une implémentation
+générique d’une pile. Votre classe DNodeStack doit utiliser une implémentation en liste doublement chaînée générique. Elle reposera donc sur une classe
+DNode<E> (similaire à Node<E>, décrite dans DSAJ-5) que vous devez définir.
+Ajoutez, dans la classe DNodeStack, une méthode public String toString()
+qui renvoie une chaîne de caractères représentant le contenu de la pile. Commentez votre code.}
+\end{quotation}
+\end{document}
