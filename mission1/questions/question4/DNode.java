@@ -1,9 +1,9 @@
 
 /**
- * Décrivez votre classe DNode ici.
+ * Decrivez votre classe DNode ici.
  *
  * @author (votre nom)
- * @version (un numéro de version ou une date)
+ * @version (un numero de version ou une date)
  */
 public class DNode<E>
 {
