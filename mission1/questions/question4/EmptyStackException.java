@@ -1,9 +1,9 @@
 
 /**
- * Décrivez votre classe EmptyStackException ici.
+ * Decrivez votre classe EmptyStackException ici.
  *
  * @author (votre nom)
- * @version (un numéro de version ou une date)
+ * @version (un numero de version ou une date)
  */
 public class EmptyStackException extends Exception
 {

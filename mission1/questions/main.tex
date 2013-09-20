@@ -9,7 +9,7 @@
 \usepackage{pdfpages}
 \usepackage{palatino}
 \usepackage{wrapfig} 
-\usepackage{color}
+\usepackage{xcolor}
 \definecolor{lightgrey}{gray}{0.8}
 \usepackage{listingsutf8}
 \lstset
@@ -34,7 +34,7 @@
 , emphstyle=\color{red}
 , emph={[2]\#using,\#define,\#ifdef,\#endif}
 , emphstyle={[2]\color{blue}}
-, frame=shadowbox
+, frame=single
 , rulesepcolor=\color{lightgrey}
 , lineskip={-1.5pt} % single line spacing
 }
@@ -129,6 +129,8 @@ Ajoutez, dans la classe DNodeStack, une méthode public String toString()
 qui renvoie une chaîne de caractères représentant le contenu de la pile. Commentez votre code.}
 \end{quotation}
 
-\lstinputlisting{question4/DNode.java}
-
+\lstinputlisting[caption=DNode.java]{question4/DNode.java}
+\lstinputlisting[caption=Stack.java]{question4/Stack.java}
+\lstinputlisting[caption=DNodeStack.java]{question4/DNodeStack.java}
+\lstinputlisting[caption=EmptyStackException.java]{question4/EmptyStackException.java}
 \end{document}
