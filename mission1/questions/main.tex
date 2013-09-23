@@ -133,4 +133,14 @@ qui renvoie une chaîne de caractères représentant le contenu de la pile. Comm
 \lstinputlisting[caption=Stack.java]{question4/Stack.java}
 \lstinputlisting[caption=DNodeStack.java]{question4/DNodeStack.java}
 \lstinputlisting[caption=EmptyStackException.java]{question4/EmptyStackException.java}
+
+\section{Question 5}
+\begin{quotation}
+\textit{Complétez l'interface Queue (décrite dans DSAJ-5) contenant une interface pour le type abstrait file en ajoutant des préconditions et postconditions pour chacune des méthodes. Votre spécification correspond-elle à une programmation défensive ?}
+\end{quotation}
+
+\lstinputlisting[caption=Queue.java]{question5/Queue.java}
+\lstinputlisting[caption=EmptyQueueException.java]{question5/EmptyQueueException.java}
+
+Ajouter des préconditions à une méthode signifie que cette dernière est prévue pour fonctionner correctement si et seulement si les préconditions sont respectées. Dès lors, à partir du moment où l'on néglige de vérifier l'entrée, on ne peut pas parler de programmation défensive. En effet, spécifier des préconditions n'empêche en rien à l'utilisateur de passer des paramètres n'y répondant pas.
 \end{document}
