@@ -7,8 +7,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{pdfpages}
-\usepackage{palatino}
-\usepackage{wrapfig} 
+\usepackage{palatino} 
 \usepackage{xcolor}
 \definecolor{lightgrey}{gray}{0.8}
 \usepackage{listingsutf8}
@@ -143,4 +142,22 @@ qui renvoie une chaîne de caractères représentant le contenu de la pile. Comm
 \lstinputlisting[caption=EmptyQueueException.java]{question5/EmptyQueueException.java}
 
 Ajouter des préconditions à une méthode signifie que cette dernière est prévue pour fonctionner correctement si et seulement si les préconditions sont respectées. Dès lors, à partir du moment où l'on néglige de vérifier l'entrée, on ne peut pas parler de programmation défensive. En effet, spécifier des préconditions n'empêche en rien à l'utilisateur de passer des paramètres n'y répondant pas.
+
+\section{Question 8}
+\begin{quotation}
+\textit{Comment faire en Java pour passer des arguments à un programme ? Soyez précis.
+Donnez un exemple illustrant l’intérêt de cette opération.}
+\end{quotation}
+Quand on écrit notre programme, nous passons par une classe « main » pour instancier nos classes et réaliser le traitement adéquat. Nous pouvons attribuer à cette classe « main » un tableau composé des arguments de notre choix sous le format « String ». Si nous voulons utiliser un autre type, nous pouvons passer par des parseurs.
+
+Ces arguments seront précisés après la compilation, c’est-à-dire lors de l’exécution du programme. Pour cela, via l’interprète de commande, nous écrivons l’instruction « java », suivi le nom du fichier contenant la classe « main » ainsi que le(s) argument(s) que vous voulez passer au programme.
+\subsection*{Exemple}
+\lstinputlisting[caption=Carre.java]{question8/Carre.java}
+\lstinputlisting[caption=TestCarre.java]{question8/TestCarre.java}
+\begin{lstlisting}[caption=Compilation]
+javac TestCarre.java
+\end{lstlisting}
+\begin{lstlisting}[caption=Exécution (3.5 correspond à l’argument que l’on passe au programme)]
+java TestCarre 3.5
+\end{lstlisting}
 \end{document}
