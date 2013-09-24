@@ -143,6 +143,27 @@ qui renvoie une chaîne de caractères représentant le contenu de la pile. Comm
 
 Ajouter des préconditions à une méthode signifie que cette dernière est prévue pour fonctionner correctement si et seulement si les préconditions sont respectées. Dès lors, à partir du moment où l'on néglige de vérifier l'entrée, on ne peut pas parler de programmation défensive. En effet, spécifier des préconditions n'empêche en rien à l'utilisateur de passer des paramètres n'y répondant pas.
 
+\section{Question 6}
+\begin{quotation}
+\textit{Comment faire pour implémenter le type abstrait de données File à l’aide de
+deux piles ? Décrivez en particulier le fonctionnement des méthodes enqueue et
+dequeue dans ce cas. A titre d’exemple, précisez l’état de chacune des deux piles
+après avoir inséré les entiers 1 2 3 à partir d’une file initialement vide. Décrivez
+ce qu’il se passe ensuite lorsque l’on effectue l’opération dequeue. Quelle est
+la complexité temporelle de ces méthodes si l’on suppose que chaque opération
+pop et push s’exécute en temps constant. Cette implémentation d’une file est-elle efficace par rapport aux autres implémentations présentées dans DSAJ-5 ?}
+\end{quotation}
+
+\section{Question 7}
+\begin{quotation}
+\textit{Comment faire en Java pour lire des données textuelles depuis un fichier et pour
+écrire des résultats dans un fichier ASCII ? Écrivez en Java une méthode générique,
+c’est-à-dire aussi indépendante que possible de son utilisation dans un contexte
+particulier, de lecture depuis un fichier texte. Faites de même pour l’écriture dans
+un fichier ASCII.}
+\end{quotation}
+\lstinputlisting[caption=FileRW.java]{question7/FileRW.java}
+
 \section{Question 8}
 \begin{quotation}
 \textit{Comment faire en Java pour passer des arguments à un programme ? Soyez précis.
