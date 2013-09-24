@@ -9,17 +9,20 @@
 \usepackage{pdfpages}
 \usepackage{palatino} 
 \usepackage{xcolor}
-\definecolor{lightgrey}{gray}{0.8}
 \usepackage{listingsutf8}
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
 \lstset
-{ language=java
+{ language=Java
 , captionpos=b
 %, frame=lines
 , morekeywords={var,get,set}
 , basicstyle=\footnotesize\ttfamily
-, keywordstyle=\color{blue}
-, commentstyle=\color{green}
-, stringstyle=\color{red}
+, keywordstyle=\color{pblue}
+, commentstyle=\color{pgreen}
+, stringstyle=\color{pred}
 , numbers=left
 , numberstyle=\scriptsize
 , stepnumber=2
@@ -34,7 +37,7 @@
 , emph={[2]\#using,\#define,\#ifdef,\#endif}
 , emphstyle={[2]\color{blue}}
 , frame=single
-, rulesepcolor=\color{lightgrey}
+%, rulesepcolor=\color{lightgrey}
 , lineskip={-1.5pt} % single line spacing
 }
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
@@ -131,7 +134,7 @@ qui renvoie une chaîne de caractères représentant le contenu de la pile. Comm
 \lstinputlisting[caption=DNode.java]{question4/DNode.java}
 \lstinputlisting[caption=Stack.java]{question4/Stack.java}
 \lstinputlisting[caption=DNodeStack.java]{question4/DNodeStack.java}
-\lstinputlisting[caption=EmptyStackException.java]{question4/EmptyStackException.java}
+%\lstinputlisting[caption=EmptyStackException.java]{question4/EmptyStackException.java}
 
 \section{Question 5}
 \begin{quotation}
@@ -139,7 +142,7 @@ qui renvoie une chaîne de caractères représentant le contenu de la pile. Comm
 \end{quotation}
 
 \lstinputlisting[caption=Queue.java]{question5/Queue.java}
-\lstinputlisting[caption=EmptyQueueException.java]{question5/EmptyQueueException.java}
+%\lstinputlisting[caption=EmptyQueueException.java]{question5/EmptyQueueException.java}
 
 Ajouter des préconditions à une méthode signifie que cette dernière est prévue pour fonctionner correctement si et seulement si les préconditions sont respectées. Dès lors, à partir du moment où l'on néglige de vérifier l'entrée, on ne peut pas parler de programmation défensive. En effet, spécifier des préconditions n'empêche en rien à l'utilisateur de passer des paramètres n'y répondant pas.
 
@@ -195,6 +198,7 @@ un fichier ASCII.}
 \textit{Comment faire en Java pour passer des arguments à un programme ? Soyez précis.
 Donnez un exemple illustrant l’intérêt de cette opération.}
 \end{quotation}
+
 Quand on écrit notre programme, nous passons par une classe « main » pour instancier nos classes et réaliser le traitement adéquat. Nous pouvons attribuer à cette classe « main » un tableau composé des arguments de notre choix sous le format « String ». Si nous voulons utiliser un autre type, nous pouvons passer par des parseurs.
 
 Ces arguments seront précisés après la compilation, c’est-à-dire lors de l’exécution du programme. Pour cela, via l’interprète de commande, nous écrivons l’instruction « java », suivi le nom du fichier contenant la classe « main » ainsi que le(s) argument(s) que vous voulez passer au programme.

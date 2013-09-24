@@ -1,45 +1,40 @@
-
-/**
- * Decrivez votre classe DNode ici.
- *
- * @author (votre nom)
- * @version (un numero de version ou une date)
- */
 public class DNode<E>
 {
-    // Instance variables: 
+    // Instance variables
     private E element; 
     private DNode<E> next; 
     private DNode<E> previous;
    
-    /* Creates a node with null references to its element and next node. */ 
+    //Creates a node with null references to its element and next node. 
     public DNode() {
        this(null, null, null);
     }
     
-    /* Creates a node with the given element and next node. */
+    // Creates a node with the given element and next node. 
     public DNode(E e, DNode<E> n, DNode<E> p) {
         element = e;
         next = n;
         previous = p;
     }
     
-    // Accessor methods:
+    // Returns the element
     public E getElement() {
         return element;
     }
     
+    // Returns the next element
     public DNode<E> getNext()
     {
         return next;
     }
     
+    // Returns the previous element
     public DNode<E> getPrevious()
     {
         return previous;
     }
     
-    // Modifier methods:
+    // Modifier methods
     public void setElement(E newElem) {
         element = newElem;
     }

@@ -1,14 +1,9 @@
-/**
- * Decrivez votre classe DNodeStack ici.
- *
- * @author (votre nom)
- * @version (un numero de version ou une date)
- */
 public class DNodeStack<E> implements Stack<E>
 {
     protected DNode<E> top; // reference to the head node 
-    protected DNode<E> bottom;
+    protected DNode<E> bottom; // reference to the end node
     protected int size; // number of elements in the stack
+
     public DNodeStack()
     { // constructs an empty stack
         top = null;
@@ -26,7 +21,11 @@ public class DNodeStack<E> implements Stack<E>
     
     public void push(E elem) 
     {
-        DNode<E> v = new DNode<E>(elem, top, null); // create and, link-in a new node
+        // create and, link-in a new node
+        // as the top node has no previous node, null is passed as third argument
+        DNode<E> v = new DNode<E>(elem, top, null);
+        // if the list isn't empty, the new element becomes the previous element of
+        // the current top element, else it becomes the bottom element moreover.
         if(top != null) top.setPrevious(v);
         else bottom = v;
         top = v;
@@ -45,8 +44,9 @@ public class DNodeStack<E> implements Stack<E>
         if(isEmpty())
             throw new EmptyStackException("!!Stack is empty. !!");
         E temp = top.getElement();
-        top = top.getNext(); // link-out the former top node slze--; return temp;
+        top = top.getNext();
         size--;
+        if(size==0) bottom = null;
         return temp;
     }
     
@@ -56,8 +56,6 @@ public class DNodeStack<E> implements Stack<E>
         String result = "Contents : ";
         while(current != null)
         {
-           //String prev = (current.getPrevious() != null) ? current.getPrevious().toString() : "null";
-           //String next = (current.getNext() != null) ? current.getNext().toString() :"null";
            result +=  current.getElement().toString() + ((current.getNext() != null) ? "-->" : "");
            current = current.getNext(); 
         }
