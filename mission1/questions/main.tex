@@ -77,7 +77,7 @@
          \textsc{Gégo} Anthony  & 28581100 & \hspace{80pt} & \textsc{Moyau} Arnold & xxxxxx00\\
          \textsc{Gena} Xavier  & xxxxxx00 & & \textsc{Naveau} Adrien & xxxxxx00\\
          \textsc{Joveneau} Quentin & xxxxxx00  & & \textsc{Payen} Marlon & xxxxxx00\\
-         \textsc{Libioulle} Thibault & xxxxxx00  & &  & 
+         \textsc{Libioulle} Thibault & 60271100  & &  & 
       \end{tabular}
       }
     }%
@@ -153,6 +153,32 @@ ce qu’il se passe ensuite lorsque l’on effectue l’opération dequeue. Quel
 la complexité temporelle de ces méthodes si l’on suppose que chaque opération
 pop et push s’exécute en temps constant. Cette implémentation d’une file est-elle efficace par rapport aux autres implémentations présentées dans DSAJ-5 ?}
 \end{quotation}
+
+Le but de cette première manipulation est que le premier élément insérer (\textbf{enqueue}) soit le premier à sortir (\textbf{dequeue}), on appelle ce principe \underline{FIFO}. Prenons deux piles que nous nommons \textit{entrée} et \textit{sortie}, lorsque nous utilisons la méthode \textbf{enqueue}, nous faisons un \textbf{push} dans \textit{entrée}. Ensuite, si nous utilisons \textbf{dequeue} :
+\begin{itemize}
+\item Nous devons vérifier si \textit{sortie} est vide. Si oui, on utilise la méthode \textbf{push} de \textit{sortie} avec comme argument le résultat du \textbf{pop} sur \textit{entrée};
+\item On utilise la méthode \textbf{pop} sur \textit{sortie} et on retourne le résultat.
+\end{itemize}
+L'action réalisée lorsque \textit{sortie} est vide a pour but d'inverser le sens de la pile \textit{entrée}. Comme cela, le premier élément insérer dans \textit{entrée} sera le dernier élément insérer dans \textit{sortie} et donc le premier à sortir. Un exemple est donné dans la figure \ref{ex6}.
+\begin{figure}[!h]
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Étape&\textit{entrée}&\textit{sortie}&Résultat\\
+\hline
+Départ&3 2 1& (vide) & /\\
+\hline
+Dequeue&(vide)&2 3& 1\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Exemple de file implémentée avec deux piles}
+\label{ex6}
+\end{figure}
+
+Au niveau de la complexité temporelle, celle de \textbf{enqueue} reste $O(1)$, puisqu'on utilise juste un \textbf{push}. Par contre si \textit{sortie} est vide, \textbf{dequeue} a une complexité de $2n+1$ opération puisqu'on opère $n$ \textbf{push} sur \textit{sortie}, $n$ \textbf{pop} sur \textit{entrée} et 1 \textbf{pop} sur \textit{sortie}(ce cas est le pire cas possible). On peut simplifier en disant que cette complexité temporelle est $O(n)$.
+
+Par rapport à l'implémetation proposée dans DSAJ-5, cette implémentation n'est pas efficace puisque la complexité de \textbf{dequeue} est $O(n)$ dans ce cas et $O(1)$ dans le livre.
 
 \section{Question 7}
 \begin{quotation}
