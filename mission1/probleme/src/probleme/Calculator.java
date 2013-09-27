@@ -1,24 +1,22 @@
 package probleme;
 
-//m.put("test", NodeStack.class);
-//try{
-//NodeStack test = (NodeStack) (m.get("test")).newInstance();
-//
-//} catch (InstantiationException x) {
-//}
-//catch (IllegalAccessException x) {
-//x.printStackTrace();
-//}
-
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.Map;
 import java.util.HashMap;
 
+/*
+ * Current syntax : java Calculator infile outfile
+ * No defensive programming at this time
+ */
 public class Calculator
 {
+	public static String OUTFILE;
+	
     public static void main(String[] args)
     {
+    	OUTFILE = args[1];
+    	
     	// Data structures used for the program
     	// symbols contains links to classes of operations to be done
     	// definitions contains the definitions created by the user
@@ -26,15 +24,19 @@ public class Calculator
         @SuppressWarnings("rawtypes")
 		Map<String, Class> symbols = new HashMap<String, Class>();
         Map<String, Double> definitions = new HashMap<String, Double>();
-        NodeStack<Double> stack = new NodeStack<Double>();
+        NodeStack<Object> stack = new NodeStack<Object>();
         
         // Adding some operations
+        symbols.put("pstack", StackPrinter.class);
         symbols.put("add", Addition.class);
         symbols.put("sub", Substraction.class);
         symbols.put("mul", Multiplication.class);
         symbols.put("div", Division.class);
         symbols.put("dup", Duplication.class);
-        symbols.put("pstack", StackPrinter.class);
+        symbols.put("exch", Exchange.class);
+        symbols.put("eq", Equal.class);
+        symbols.put("ne", NotEqual.class);
+        symbols.put("pop", StackPop.class);
         
         // Reading tokens
         String fileContent = FileRW.readFile(args[0]);
@@ -48,7 +50,7 @@ public class Calculator
         		stack.push(token);
         		System.out.println("Double read : " + token);
         	}
-        	else if(strTok.hasNext("\\s*/\\S+")) // We have a definition
+        	else if(strTok.hasNext("\\s*/\\S+")) // We have a definition (regex for (space) + / + non-space characters)
         	{
         		String token = strTok.next();
         		Double value = 0.0;

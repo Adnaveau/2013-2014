@@ -1,14 +1,14 @@
 package probleme;
 
-public class Addition implements Operation {
+public class Exchange implements Operation {
 
 	@Override
 	public void eval(NodeStack<Object> stack) {
 		// TODO Stub de la méthode généré automatiquement
 		Double first = (Double) stack.pop();
 		Double second = (Double) stack.pop();
-		Double third = first + second;
-		stack.push(third);
+		stack.push(first);
+		stack.push(second);
 	}
 
 }

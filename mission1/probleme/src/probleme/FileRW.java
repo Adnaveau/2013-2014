@@ -32,11 +32,11 @@ public class FileRW {
 		return content;
 	}
 	
-	public void writeFile(String pathFile, String toWrite){
+	public static void writeFile(String pathFile, String toWrite){
 	    File file = new File(pathFile);
 		try {
-			PrintWriter writer = new PrintWriter (new BufferedWriter (new FileWriter(file)));
-			writer.println(toWrite);
+			PrintWriter writer = new PrintWriter (new BufferedWriter (new FileWriter(file, true)));
+			writer.print(toWrite);
 			writer.close();
 		} catch (IOException e) {
 			System.out.println("Error while writing file!");
