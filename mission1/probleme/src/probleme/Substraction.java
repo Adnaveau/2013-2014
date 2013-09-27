@@ -3,7 +3,7 @@ package probleme;
 public class Substraction implements Operation {
 
 	@Override
-	public void eval(NodeStack<Double> stack) {
+	public void eval(NodeStack<Object> stack) {
 		// TODO Stub de la méthode généré automatiquement
 		Double first = (Double) stack.pop();
 		Double second = (Double) stack.pop();

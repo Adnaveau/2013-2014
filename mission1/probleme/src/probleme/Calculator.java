@@ -24,7 +24,7 @@ public class Calculator
         @SuppressWarnings("rawtypes")
 		Map<String, Class> symbols = new HashMap<String, Class>();
         Map<String, Double> definitions = new HashMap<String, Double>();
-        NodeStack<Double> stack = new NodeStack<Double>();
+        NodeStack<Object> stack = new NodeStack<Object>();
         
         // Adding some operations
         symbols.put("pstack", StackPrinter.class);
