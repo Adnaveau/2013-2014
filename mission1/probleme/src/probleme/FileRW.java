@@ -1,3 +1,5 @@
+package probleme;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -20,7 +22,7 @@ public class FileRW {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			while ((lineTMP = reader.readLine()) != null){
-				content = content + lineTMP + " "; // Pour faciliter la lecture, on remplace les lignes par des espaces
+				content = content + lineTMP + " "; // Replacing new lines by spaces simplifies the scanning process
 			}
 			reader.close();
 		} catch (IOException e) {

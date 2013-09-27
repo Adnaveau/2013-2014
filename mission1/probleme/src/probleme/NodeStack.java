@@ -1,3 +1,7 @@
+package probleme;
+
+import java.util.EmptyStackException;
+
 public class NodeStack<E> //implements Stack<E> 
 { 
         protected Node<E> top;
@@ -25,12 +29,12 @@ public class NodeStack<E> //implements Stack<E>
         }
                 
         public E top() throws EmptyStackException { 
-            if (isEmpty()) throw new EmptyStackException("!!Stack is empty. !!"); 
+            if (isEmpty()) throw new EmptyStackException(); 
             return top.getElement();
         }
         
         public E pop() throws EmptyStackException { 
-            if (isEmpty()) throw new EmptyStackException("!!Stack is empty. !!"); 
+            if (isEmpty()) throw new EmptyStackException(); 
             E temp = top.getElement(); 
             top = top.getNext(); // link-out the former top node 
             size--; 

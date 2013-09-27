@@ -1,3 +1,5 @@
+package probleme;
+
 /**
  * Decrivez votre classe DNode ici.
  *

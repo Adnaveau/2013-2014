@@ -1,3 +1,4 @@
+package probleme;
 
 /**
  * Décrivez votre interface Operation ici.
@@ -14,5 +15,5 @@ public interface Operation
      * @param  y    le paramètre de cette méthode
      * @return        le résultat retourné par exempleDeMethode
      */
-    void eval();
+    public void eval(NodeStack<Double> stack);
 }
