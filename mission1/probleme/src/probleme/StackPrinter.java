@@ -3,11 +3,11 @@ package probleme;
 public class StackPrinter implements Operation {
 
 	@Override
-	public void eval(NodeStack<Object> stack) {
+	public void eval(NodeStack<Double> stack) {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		Node<Object> current = stack.top;
+		Node<Double> current = stack.top;
         while(current != null)
         {
            sb.append(current.getElement().toString() + "\n");

@@ -3,12 +3,12 @@ package probleme;
 public class Equal implements Operation {
 
 	@Override
-	public void eval(NodeStack<Object> stack) {
+	public void eval(NodeStack<Double> stack) {
 		// TODO Stub de la méthode généré automatiquement
-		Double first = (Double) stack.pop();
-		Double second = (Double) stack.pop();
+		Double first = stack.pop();
+		Double second = stack.pop();
 		Boolean third = first.equals(second);
-		stack.push(third);
+		FileRW.writeFile(Calculator.OUTFILE, third.toString());
 	}
 
 }

@@ -15,5 +15,5 @@ public interface Operation
      * @param  y    le paramètre de cette méthode
      * @return        le résultat retourné par exempleDeMethode
      */
-    public void eval(NodeStack<Object> stack);
+    public void eval(NodeStack<Double> stack);
 }
