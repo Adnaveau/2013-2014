@@ -2,6 +2,13 @@ package probleme;
 
 public class StackPrinter implements Operation {
 
+	private String outfile;
+	
+	public StackPrinter(String outfile)
+	{
+		this.outfile = outfile;
+	}
+	
 	@Override
 	public void eval(NodeStack<Object> stack) {
 		
@@ -14,7 +21,7 @@ public class StackPrinter implements Operation {
            current = current.getNext(); 
         }
 		
-        FileRW.writeFile(Calculator.OUTFILE, sb.toString());
+        FileRW.writeFile(outfile, sb.toString());
 	}
 
 }
