@@ -21,7 +21,7 @@ public class Calculator
     	// definitions contains the definitions created by the user
     	// stack contains the numbers stack
 		Map<String, Operation> symbols = new HashMap<String, Operation>();
-        Map<String, Double> definitions = new HashMap<String, Double>();
+        Map<String, Object> definitions = new HashMap<String, Object>();
         NodeStack<Object> stack = new NodeStack<Object>();
         FileRW io = new FileRW(args[0], args[1]);
         
@@ -36,7 +36,7 @@ public class Calculator
         symbols.put("eq", new Equal());
         symbols.put("ne", new NotEqual());
         symbols.put("pop", new StackPop());
-        symbols.put("def", new Definition(definitions));
+        symbols.put("def", new Definition(definitions, symbols));
         
         // Reading tokens
         String fileContent = io.readFile();
@@ -64,6 +64,11 @@ public class Calculator
         		{
         			System.out.println("Double read : " + token);
         			stack.push(definitions.get(token));
+        		}
+        		else if(token.equals("true") || token.equals("false"))
+        		{
+        			stack.push(Boolean.valueOf(token));
+        			System.out.println("Boolean read : " + token);
         		}
         		else
         		{
