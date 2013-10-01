@@ -109,7 +109,7 @@ Il est possible que différentes erreurs se posent lors de la lecture des mots (
 \item Commande inconnue : si un mot ne correspond ni à une valeur, ni à une opération, le programme retourne une erreur, et s'arrête.
 \item Erreur de pile : si une valeur manque pour réaliser une opération, le programme retourne une erreur et s'arrête.
 \item Erreur de fichier : si le fichier d'entrée est introuvable, n'est pas lisible, ou s'il est impossible d'écrire dans le fichier de sortie, le programme retourne une erreur et s'arrête.
-\item Double définition : si une définition rentre en conflit avec les définitions existantes, le programme retourne une erreur et s'arrête.
+\item Double définition : si une définition rentre en conflit avec les définitions existantes, le programme retourne une erreur et s'arrête s'il s'agit d'une opération ou un avertissement est retourné s'il s'agit d'un nombre/booléen.
 \item Opération sur types incompatibles : si une opération est réalisée sur un booléen et un nombre réel, le programme retourne une erreur et s'arrête.
 \item Division par zéro : si une division par zéro a lieu, un avertissement est retourné.
 \end{itemize}
