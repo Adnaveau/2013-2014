@@ -1,0 +1,116 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{palatino} 
+\usepackage{xcolor}
+\usepackage{listingsutf8}
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+\lstset
+{ language=Java
+, captionpos=b
+%, frame=lines
+, morekeywords={var,get,set}
+, basicstyle=\footnotesize\ttfamily
+, keywordstyle=\color{pblue}
+, commentstyle=\color{pgreen}
+, stringstyle=\color{pred}
+, numbers=left
+, numberstyle=\scriptsize
+, stepnumber=2
+, numbersep=5pt
+, breaklines=true
+, tabsize=2
+, showstringspaces=false
+, emph={double,bool,int,unsigned,char,true,false,void,get,set}
+, emphstyle=\color{blue}
+, emph={Assert,Test}
+, emphstyle=\color{red}
+, emph={[2]\#using,\#define,\#ifdef,\#endif}
+, emphstyle={[2]\color{blue}}
+, frame=single
+%, rulesepcolor=\color{lightgrey}
+, lineskip={-1.5pt} % single line spacing
+}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{SINF1121 - Groupe 9\\Rapport 1}
+\author{\\Gégo Anthony\\ Gena Xavier \\Joveneau Quentin\\Libioulle Thibault \\Moyaux Arnold\\ Naveau Adrien \\ Payen Marlon}
+\def\blurb{\textsc{Université catholique de Louvain\\
+  École polytechnique de Louvain}}
+\def\clap#1{\hbox to 0pt{\hss #1\hss}}%
+\def\ligne#1{%
+  \hbox to \hsize{%
+    \vbox{\centering #1}}}%
+\def\haut#1#2#3{%
+  \hbox to \hsize{%
+    \rlap{\vtop{\raggedright #1}}%
+    \hss
+    \clap{\vbox{\vfill\centering #2\vfill}}%
+    \hss
+    \llap{\vtop{\raggedleft #3}}}}%
+\begin{document}
+\begin{titlepage}
+\thispagestyle{empty}\vbox to 1\vsize{%
+  \vss
+  \vbox to 1\vsize{%
+    \haut{\includegraphics[scale=0.15]{logo_ucl.pdf}}{\blurb}{\includegraphics[scale=0.4]{logo_epl.jpg}}
+    \vfill
+    \ligne{\Huge \textbf{\textsc{Structures de données\\ et algorithmes (SINF1121)}}}
+    \vspace{5mm}
+    \ligne{\Large \textbf{Mission 1 - Produit final}}
+    \vspace{5mm}
+    \ligne{\large{-- 1 octobre 2013 --}}
+    %\begin{center}\includegraphics[scale=3]{img/img_couverture.png}\end{center}
+    \vfill
+    \ligne{%
+      \begin{tabular}{c}
+        \textsc{Travail du groupe 9 :}
+      \end{tabular}}
+    \vspace{5mm}
+    \ligne{%
+      \begin{tabular}{lrclr}
+         \textsc{Gégo} Anthony  & 28581100 & \hspace{80pt} & \textsc{Moyau} Arnold & xxxxxx00\\
+         \textsc{Gena} Xavier  & xxxxxx00 & & \textsc{Naveau} Adrien & xxxxxx00\\
+         \textsc{Joveneau} Quentin & xxxxxx00  & & \textsc{Payen} Marlon & xxxxxx00\\
+         \textsc{Libioulle} Thibault & 60271100  & &  & 
+      \end{tabular}
+      }
+    }%
+  \vss
+  }
+\end{titlepage}
+
+\section{Cahier des charges}
+Notre première mission consistait à réaliser une petite calculatrice en notation polonaise inverse. Des nombres sont stockés sur une pile, et les opérations s'exécutent sur cette dernière. Toutes les commandes sont lues à partir d'un fichier postscript. Les différents morceaux du programme sont :
+\begin{itemize}
+\item Une pile, sur laquelle seront stockées les données, à savoir, les nombres et les booléens.
+\item Des commandes, telle que l'addition ou la soustraction, qui agiront sur la pile, notamment pour enlever les données nécessaire à l'opération et pour y ajouter leur résultat.
+\item Un interpréteur, qui prend une décision pour chaque mot (token) lu dans le fichier. S'il s'agit d'une donnée, il l'ajoute sur la pile, ou lance une opération s'il s'agit d'une commande.
+\end{itemize}
+Les différentes tâches peuvent être réparties aisément. En effet, en définissant des interfaces, un premier membre du groupe peut s'occuper de la pile, un deuxième de l'interpréteur, et les autres peuvent se répartir les différentes commandes, sans avoir besoin de l'implémentation d'autrui.
+
+\section{Abstraction et réutilisation du code}
+L'abstraction de données nous permet de réutiliser et de compléter du code aisément. Ainsi, notre type pile, complètement isolée du reste du code de notre calculatrice, peut facilement être réutilisé dans un autre programme, pour autant qu'il respecte l'interface fournie. De même, d'autres opérations peuvent être ajoutées à la calculatrice sans devoir modifier le code en profondeur.
+
+\section{Changement d'implémentation}
+Puisqu'il s'agit d'un type abstrait de données, pour autant que la définition (l'interface) de la pile ne change pas, changer d'implémentation ne nécessite que de modifier le code à l'intérieur de la classe concernée. Ainsi, que la pile soit implémentée à l'aide d'une liste chaînée, doublement chaînée, ou d'un tableau, cela ne change rien aux yeux des autres classes qui l'utiliseront telle que définie dans l'interface.
+
+\section{Erreurs Postscript}
+Il est possible que différentes erreurs se posent lors de la lecture des mots (tokens) du fichier postscript. En voici une liste :
+\begin{itemize}
+\item Commande inconnue : si un mot ne correspond ni à une valeur, ni à une opération, le programme retourne une erreur, et s'arrête.
+\item Erreur de pile : si une valeur manque pour réaliser une opération, le programme retourne une erreur et s'arrête.
+\item Erreur de fichier : si le fichier d'entrée est introuvable, n'est pas lisible, ou s'il est impossible d'écrire dans le fichier de sortie, le programme retourne une erreur et s'arrête.
+\item Double définition : si une définition rentre en conflit avec les définitions existantes, le programme retourne une erreur et s'arrête.
+\item Opération sur types incompatibles : si une opération est réalisée sur un booléen et un nombre réel, le programme retourne une erreur et s'arrête.
+\item Division par zéro : si une division par zéro a lieu, un avertissement est retourné.
+\end{itemize}
+\end{document}
