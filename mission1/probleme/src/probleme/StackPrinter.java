@@ -14,7 +14,7 @@ public class StackPrinter implements Operation {
 		Node<Object> current = stack.top;
         while(current != null)
         {
-        	outfile.writeToFile(current.getElement().toString() + "\n");
+        	outfile.writeToFile(current.getElement().toString());
            current = current.getNext(); 
         }
 	}
