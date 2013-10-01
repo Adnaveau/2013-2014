@@ -2,26 +2,21 @@ package probleme;
 
 public class StackPrinter implements Operation {
 
-	private String outfile;
+	private FileRW outfile;
 	
-	public StackPrinter(String outfile)
+	public StackPrinter(FileRW io)
 	{
-		this.outfile = outfile;
+		this.outfile = io;
 	}
 	
 	@Override
 	public void eval(NodeStack<Object> stack) {
-		
-		StringBuilder sb = new StringBuilder();
-		
 		Node<Object> current = stack.top;
         while(current != null)
         {
-           sb.append(current.getElement().toString() + "\n");
+        	outfile.writeToFile(current.getElement().toString() + "\n");
            current = current.getNext(); 
         }
-		
-        FileRW.writeFile(outfile, sb.toString());
 	}
 
 }

@@ -23,9 +23,10 @@ public class Calculator
 		Map<String, Operation> symbols = new HashMap<String, Operation>();
         Map<String, Double> definitions = new HashMap<String, Double>();
         NodeStack<Object> stack = new NodeStack<Object>();
+        FileRW io = new FileRW(args[0], args[1]);
         
         // Adding some operations
-        symbols.put("pstack", new StackPrinter(args[1]));
+        symbols.put("pstack", new StackPrinter(io));
         symbols.put("add", new Addition());
         symbols.put("sub", new Substraction());
         symbols.put("mul", new Multiplication());
@@ -38,7 +39,7 @@ public class Calculator
         symbols.put("def", new Definition(definitions));
         
         // Reading tokens
-        String fileContent = FileRW.readFile(args[0]);
+        String fileContent = io.readFile();
         Scanner strTok = new Scanner(fileContent);
         strTok.useLocale(Locale.US); // Enables "dot style" floating point numbers to be recognized as Double 
         while(strTok.hasNext())
@@ -87,6 +88,7 @@ public class Calculator
         	}
         }
         strTok.close();
+        io.close();
     }
 }
 
