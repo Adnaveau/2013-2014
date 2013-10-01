@@ -1,5 +1,6 @@
 package probleme;
 
+import java.util.EmptyStackException;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.Map;
@@ -66,11 +67,23 @@ public class Calculator
         		else
         		{
         			System.out.println("Symbol read : " + token);
-        			Operation todo = symbols.get(token);
-        			todo.eval(stack);
+        			if(! symbols.containsKey(token))
+        			{
+        				System.err.println("Unknown command : " + token);
+        				System.exit(1);
+        			}
+        			
+        			try
+        			{
+        				Operation todo = symbols.get(token);
+        				todo.eval(stack);
+        			}
+        			catch(EmptyStackException e)
+        			{
+        				System.err.println("Stack error near command : " + token);
+        				System.exit(1);
+        			}
         		}
-    
-        		
         	}
         }
         strTok.close();
