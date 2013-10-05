@@ -1,0 +1,28 @@
+1) - La profondeur correspond au nombre d'ancêtres d'un noeud.
+- Le niveau d d'un arbre correspond à l'ensemble des noeuds dont la profondeur est d. Graphiquement parlant,
+il correspond à un étage de l'arbre.
+- La hauteur de l'arbre correspond au nombre total de niveaux, 
+autrement dit la distance entre le noeud le plus éloigné et la racine.
+
+Ces définitions sont valables pour n'importe quel type d'arbre, binaires ou pas. Bien que l'implémentation 
+n'importe pas, la structure de données choisie pour représenter l'abre devra refléter ces notions.
+
+2) Pour correspondre à la définition, l'arbre doit également etre ordonné. On parle alors de noeud 
+enfant à gauche et à droite. Le noeud de gauche précède le noeud de droite.
+Un arbre binaire impropre correspond à un arbre dont les noeuds n'ont pas forcément 0 ou 2 noeuds enfants.
+Il n'est donc pas spécialement désordonné.
+
+En supposant que l'arbre possède également un nombre d'enfant maximal fixé pour chaque noeud, on peut
+attribuer un indices à chaque noeud. Ainsi, les éléments peuvent facilement être stocké dans un tableau,
+une structure de donnée très simple.
+
+Dans le cas contraire, il n'est pas possible de faire appel à cette méthode. Il faudra utiliser une structure
+plus complexes telles que des noeuds liés entres eux. Ainsi, un noeud contiendra une référence vers sa valeur
+et ses différentes noeuds enfants. Il est donc nécessaire de maintenir une référence vers la racine.
+
+3) Un arbre équilibré est un arbre ordonné à la hauteur logarithmique dont la valeur de tous les noeuds descendants respectent le critère
+de tri par rapport à ce noeud. Ainsi, par exemple, dans un arbre binaire équilibré,
+si 50 est le noeud racine, 17 peut etre le fils de gauche, et 72 peut etre le fils de droite, mais 62 ne sera
+jamais le fils de droite de 17. Il n'est donc pas nécessairement propre.
+Un arbre binaire complet est arbre binaire propre. On dit essentiellement car il peut y avoir un noeud fils par noeud.
+Un arbre complet n'est pas forcément équilibre
