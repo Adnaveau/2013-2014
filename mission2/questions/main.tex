@@ -1,0 +1,217 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{palatino} 
+\usepackage{xcolor}
+\usepackage{listingsutf8}
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+\lstset
+{ language=Java
+, captionpos=b
+%, frame=lines
+, morekeywords={var,get,set}
+, basicstyle=\footnotesize\ttfamily
+, keywordstyle=\color{pblue}
+, commentstyle=\color{pgreen}
+, stringstyle=\color{pred}
+, numbers=left
+, numberstyle=\scriptsize
+, stepnumber=2
+, numbersep=5pt
+, breaklines=true
+, tabsize=2
+, showstringspaces=false
+, emph={double,bool,int,unsigned,char,true,false,void,get,set}
+, emphstyle=\color{blue}
+, emph={Assert,Test}
+, emphstyle=\color{red}
+, emph={[2]\#using,\#define,\#ifdef,\#endif}
+, emphstyle={[2]\color{blue}}
+, frame=single
+%, rulesepcolor=\color{lightgrey}
+, lineskip={-1.5pt} % single line spacing
+}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{SINF1121 - Groupe 9\\Rapport 1}
+\author{\\Gégo Anthony\\ Gena Xavier \\Joveneau Quentin\\Libioulle Thibault \\Moyaux Arnold\\ Naveau Adrien \\ Payen Marlon}
+\def\blurb{\textsc{Université catholique de Louvain\\
+  École polytechnique de Louvain}}
+\def\clap#1{\hbox to 0pt{\hss #1\hss}}%
+\def\ligne#1{%
+  \hbox to \hsize{%
+    \vbox{\centering #1}}}%
+\def\haut#1#2#3{%
+  \hbox to \hsize{%
+    \rlap{\vtop{\raggedright #1}}%
+    \hss
+    \clap{\vbox{\vfill\centering #2\vfill}}%
+    \hss
+    \llap{\vtop{\raggedleft #3}}}}%
+\begin{document}
+\begin{titlepage}
+\thispagestyle{empty}\vbox to 1\vsize{%
+  \vss
+  \vbox to 1\vsize{%
+    \haut{\includegraphics[scale=0.15]{logo_ucl.pdf}}{\blurb}{\includegraphics[scale=0.4]{logo_epl.jpg}}
+    \vfill
+    \ligne{\Huge \textbf{\textsc{Structures de données\\ et algorithmes (SINF1121)}}}
+    \vspace{5mm}
+    \ligne{\Large \textbf{Mission 2 - Réponses aux questions}}
+    \vspace{5mm}
+    \ligne{\large{-- 9 octobre 2013 --}}
+    %\begin{center}\includegraphics[scale=3]{img/img_couverture.png}\end{center}
+    \vfill
+    \ligne{%
+      \begin{tabular}{c}
+        \textsc{Travail du groupe 9 :}
+      \end{tabular}}
+    \vspace{5mm}
+    \ligne{%
+      \begin{tabular}{lrclr}
+         \textsc{Gégo} Anthony  & 28581100 & \hspace{80pt} & \textsc{Moyau} Arnold & xxxxxx00\\
+         \textsc{Gena} Xavier  & xxxxxx00 & & \textsc{Naveau} Adrien & xxxxxx00\\
+         \textsc{Joveneau} Quentin & xxxxxx00  & & \textsc{Payen} Marlon & xxxxxx00\\
+         \textsc{Libioulle} Thibault & 60271100  & &  & 
+      \end{tabular}
+      }
+    }%
+  \vss
+  }
+\end{titlepage}
+
+\section{Question 1}
+\begin{quotation}
+\color{gray}\textit{Qu’entend-on par les notions de hauteur, de profondeur et de niveau dans le contexte de structures arborescentes ? Décrivez précisément ces notions et les liens
+éventuels entre elles ? Ces notions dépendent-elles du fait que l’on parle d’arbres
+binaires ou d’arbres en général ? Ces notions dépendent-elles de la structure de
+données utilisée pour représenter des arbres ? Justifiez vos réponses.}
+\end{quotation}
+
+\begin{itemize}
+\item La profondeur correspond au nombre d'ancêtres d'un noeud.
+\item Le niveau d d'un arbre correspond à l'ensemble des noeuds dont la profondeur est d. Graphiquement parlant,
+il correspond à un étage de l'arbre.
+\item La hauteur de l'arbre correspond au nombre total de niveaux, 
+autrement dit la distance entre le noeud le plus éloigné et la racine.
+\end{itemize}
+
+
+Ces définitions sont valables pour n'importe quel type d'arbre, binaires ou pas. Ces notions ne dépendent pas forcément de la structure de données choisie. Nous verrons effectivement ci-dessous qu'il est possible de représenter un arbre sous forme de tableaux dans certains cas.
+
+\section{Question 2} 
+\begin{quotation}
+\color{gray}\textit{Un arbre dont chaque noeud possède au plus deux fils est-il nécessairement binaire ? Qu’entend-on par arbre ordonné ? L’ordre dépend-il des valeurs mémorisées
+dans l’arbre ? Un arbre binaire impropre est-il désordonné ?
+Si l’on s’intéresse à des arbres dont la profondeur maximale est connue et fixée,
+y a-t-il une structure de données particulièrement bien adaptée à ce cas ? Si oui
+laquelle, sinon pourquoi ? Cela dépend-il du fait que l’arbre soit binaire ou non ?
+Cela dépend-il des opérations effectuées sur l’arbre ?}
+\end{quotation}
+
+Pour correspondre à la définition, l'arbre doit également etre ordonné. On parle alors de noeud 
+enfant à gauche et à droite. Le noeud de gauche précède le noeud de droite.
+Un arbre binaire impropre correspond à un arbre dont les noeuds n'ont pas forcément 0 ou 2 noeuds enfants.
+Il n'est donc pas spécialement désordonné.
+
+En supposant que l'arbre possède également un nombre d'enfant maximal fixé pour chaque noeud, on peut
+attribuer un indices à chaque noeud. Ainsi, les éléments peuvent facilement être stocké dans un tableau,
+une structure de donnée très simple.
+
+Dans le cas contraire, il n'est pas possible de faire appel à cette méthode. Il faudra utiliser une structure
+plus complexes telles que des noeuds liés entres eux. Ainsi, un noeud contiendra une référence vers sa valeur
+et ses différentes noeuds enfants. Il est donc nécessaire de maintenir une référence vers la racine.
+
+\section{Question 3}
+\begin{quotation}
+\color{gray}\textit{Qu’est-ce qu’un arbre équilibré ? Un arbre binaire équilibré est-il nécessairement
+propre ? Si oui, démontrez pourquoi, sinon donnez un exemple d’arbre équilibré
+impropre ? Comment définiriez-vous ce qu’est un arbre binaire (essentiellement)
+complet ? Pourquoi, à votre avis, est-il utile de préciser “(essentiellement)” ? Un
+arbre complet est-il toujours équilibré ? Un arbre équilibré est-il toujours complet ? Justifiez vos réponses.}
+\end{quotation}
+
+Un arbre équilibré est un arbre ordonné à la hauteur logarithmique dont la valeur de tous les noeuds descendants respectent le critère
+de tri par rapport à ce noeud. Ainsi, par exemple, dans un arbre binaire équilibré,
+si 50 est le noeud racine, 17 peut etre le fils de gauche, et 72 peut etre le fils de droite, mais 62 ne sera
+jamais le fils de droite de 17. Il n'est donc pas nécessairement propre.
+Un arbre binaire complet est arbre binaire propre. On dit essentiellement car il peut y avoir un noeud fils par noeud.
+Un arbre complet n'est pas forcément équilibre
+
+\section{Question 4}
+\begin{quotation}
+\color{gray}\textit{Qu’entend-on par une implémentation d’un arbre par une structure chaînée ? En
+quoi cette notion de structure chaînée est-elle différente (ou plus générale) par
+rapport à celle de liste chaînée ? Quels sont les points communs entre liste et
+structure chaînée ? Quelle est la classe qui implémente un arbre par une structure
+chaînée dans DSAJ-5 ? Serait-il possible de remplacer cette implémentation par
+une autre utilisant une liste chaînée ?}
+\end{quotation}
+
+Lorsqu’on implémente un arbre avec une structure chainée, chaque élément à une référence vers l’élément qui est son parent et des références vers ses différents enfants. On peut donc ainsi facilement créer un arbre avec tout en haut un élément qui a une référence null comme parent et plusieurs enfants, qui ont chacun une référence vers leur parent et d’éventuels enfants et ainsi de suite.
+La différence avec une liste chainée habituelle est que dans une liste chainée en général, chaque élément à une référence vers l’élément suivant uniquement et l’on a une référence vers le premier élément de la liste pour pouvoir la parcourir.
+La classe Tree implémente un arbre par une structure chainée. Oui on pourrait représenter un arbre par une liste chainée 5 ( ?), mais il serait plus difficile d’accéder à chaque élément.
+
+\section{Question 5}
+\begin{quotation}
+\color{gray}\textit{On considère une variante de la représentation d’un arbre binaire en structure
+chaînée (DSAJ-5, pages 301 et suivantes). Dans cette variante, un noeud ne contient pas de référence vers son parent, ni de méthodes parent ou iterator.
+Ce fait constitue-t-il un problème pour réaliser des parcours de l’arbre binaire ?
+Pourquoi ?
+Donnez un algorithme pour réaliser la méthode parent sur base des autres méthodes disponibles dans l’interface. Si toutes les méthodes déjà disponibles s’exécutent en temps constant, quelle est la complexité temporelle de votre algorithme ?}
+\end{quotation}
+
+Non, il est tout à fait possible de parcourir un arbre binaire en ayant une référence sur le premier élément tout en haut de l’arbre et ensuite de descendre dans l’arborescence de l’arbre. Dans ce cas-ci on retient la position du nœud ou on se situe en mémoire. Lorsque le programme parcours l’arbre, une liste des positions des nœuds par lesquels on passe est établie.
+
+%\lstinputlisting[caption=EmptyQueueException.java]{question5/EmptyQueueException.java}
+\section{Question 6}
+\begin{quotation}
+\color{gray}\textit{Un arbre binaire peut également être défini récursivement comme suit. Un arbre
+binaire est :
+– soit vide (sans aucun noeud),
+– soit il contient un noeud racine, un fils gauche qui est un arbre binaire et un fils
+droit qui est un arbre binaire.
+On considère l’interface RBinaryTree qui spécifie les méthodes essentielles
+d’un arbre binaire conformément à cette définition. Celle-ci fait appel à l’interface
+Position décrite dans DSAJ-5. Le code de ces deux interfaces est disponible
+sur le site iCampus, suivre Documents et liens/missions/m2/.
+Écrivez en Java la classe LinkedRBinaryTree qui implémente l’interface
+RBinaryTree.}
+\end{quotation}
+
+\section{Question 7}
+\begin{quotation}
+\color{gray}\textit{Une expression arithmétique peut contenir les quatre opérateurs fondamentaux
++,-,*,/ et des scalaires, comme par exemple : 3 * 10 - 2/4. Une expression
+analytique, telle que x
+2+x sin x3 peut contenir également des variables x, y,...,
+d’autres opérateurs comme la fonction puissance entière ˆ ou d’autres fonctions
+mathématiques comme sin ou cos.
+Une expression arithmétique peut être représentée par un arbre. Quelles sont les
+caractéristiques de cet arbre ? Pourquoi cette représentation est-elle utile ? Citez
+deux exemples de manipulation d’une expression arithmétique et exprimez comment ces manipulations sont mise en oeuvre à l’aide de cette représentation.
+Quelles sont les caractéristiques supplémentaires pour un arbre représentant une
+expression analytique ?}
+\end{quotation}
+
+\section{Question 8}
+\begin{quotation}
+\color{gray}\textit{En supposant qu’un arbre représente une expression analytique, quel type de parcours de cet arbre permet-il de construire l’expression analytique complètement
+parenthésée qui lui correspond ? Donnez le pseudo-code d’une méthode public
+String toString() qui réalise cette construction.}
+\end{quotation}
+
+\section{Question 9}
+\begin{quotation}
+\color{gray}\textit{Représentez graphiquement toutes les opérations de dérivation formelle (voir section 8) comme des opérations de manipulation d’un arbre et donnez une description sous forme de pseudo-code de ces opérations.}
+\end{quotation}
+
+\end{document}
