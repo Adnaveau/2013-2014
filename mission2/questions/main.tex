@@ -209,12 +209,39 @@ Quelles sont les caractéristiques supplémentaires pour un arbre représentant 
 expression analytique ?}
 \end{quotation}
 
+Effectivement, une expression arithmétique peut être représentée par un arbre binaire propre. Pour ce faire, les opérandes sont représentés par des nœuds externes (nœuds n’ayant pas d’enfants et qui sont représentés par des variables ou des constantes) et les opérateurs sont représentés par des nœuds internes.
+
+Cette représentation est utile car l’arbre est binaire et propre car les opérateurs nécessitent  2 opérandes pour réaliser une opération. Les 2 opérandes sont des nœuds externes  et l’opérateur est un nœud interne donc il est facile de déterminer l’ordre de ces différents éléments. 2 exemples :
+
+\begin{itemize}
+\item 2 + 3 : Les opérandes 2 et 3 sont des nœuds externes et l’opérateur « + » est un nœud interne, donc nous pouvons réaliser l’opération en respectant l’ordre qui aboutit au résultat de cette addition.
+
+\item 6 / 3 : C’est le même principe que dans le premier exemple à savoir que l’on effectue une division entre les 2 opérandes qui sont 6 et 3. 
+\end{itemize}
+
+
 \section{Question 8}
 \begin{quotation}
 \color{gray}\textit{En supposant qu’un arbre représente une expression analytique, quel type de parcours de cet arbre permet-il de construire l’expression analytique complètement
 parenthésée qui lui correspond ? Donnez le pseudo-code d’une méthode public
 String toString() qui réalise cette construction.}
 \end{quotation}
+
+L'expression peut être reconstituée à l'aide d'un parcours infixe. Il faudra s'assurer pour des expressions comme $\sin(x)$ que $x$ soit bien le noeud fils droit de $\sin$.
+
+\begin{lstlisting}[caption=Pseudo-code d'une méthode public String toString()]
+public String toString()
+{
+   resultat <- "(";
+   si this a un noeud fils gauche g alors
+      resultat <- resultat + g.toString();
+   resultat <- resultat + this.element().toString()
+   si this a un noeud fils droit d alors
+      resultat <- resultat + d.toString();
+   resultat <- resultat + ")";
+   retourner resultat;
+}
+\end{lstlisting}
 
 \section{Question 9}
 \begin{quotation}
