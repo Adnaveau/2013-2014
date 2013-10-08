@@ -248,4 +248,88 @@ public String toString()
 \color{gray}\textit{Représentez graphiquement toutes les opérations de dérivation formelle (voir section 8) comme des opérations de manipulation d’un arbre et donnez une description sous forme de pseudo-code de ces opérations.}
 \end{quotation}
 
+\begin{tabular}{|c|c|l|}
+\hline
+\raisebox{-35px}{\includegraphics[scale=0.5]{img/1.png}} & 
+\raisebox{-35px}{\includegraphics[scale=0.5]{img/2.png}} & 
+\begin{minipage}{200px}\ \newline
+deriveOpPlus(Tree root)\newline \{\newline
+root.setLeft(derive(root.getLeft());\newline
+root.setRight(derive(root.getRight());\newline
+\}\newline
+\end{minipage}
+\\
+\hline
+\raisebox{-35px}{\includegraphics[scale=0.5]{img/3.png}} & 
+\raisebox{-35px}{\includegraphics[scale=0.5]{img/4.png}} & 
+\begin{minipage}{200px}\ \newline
+deriveOpMinus(Tree root)\newline \{\newline
+root.setLeft(derive(root.getLeft());\newline
+root.setRight(derive(root.getRight());\newline
+\}\newline
+\end{minipage}
+\\
+\hline
+\raisebox{-35px}{\includegraphics[scale=0.5]{img/5.png}} & 
+\raisebox{-35px}{\includegraphics[scale=0.35]{img/6.png}} & 
+\begin{minipage}{200px}\ \newline
+deriveOpMultiply(Tree root)\newline \{ \newline
+Tree left = new Tree(‘*’, root.getRight(), derive(root.getLeft()));\newline
+Tree right = new Tree(‘*’,root.getLeft(), derive(root.getRight()));\newline
+root.setLeft(left);\newline
+root.setRight(right);\newline
+root.setRoot(‘+’);\newline
+\}\newline
+\end{minipage}
+\\
+\hline
+\raisebox{-35px}{\includegraphics[scale=0.5]{img/7.png}} & 
+\raisebox{-35px}{\includegraphics[scale=0.3]{img/8.png}} & 
+\begin{minipage}{200px}\ \newline
+deriveOpDivision(Tree root)\newline \{ \newline
+root.setRight(new Tree(‘*’, \newline root.getRight(), root.getRight();\newline \newline
+root.setLeft(new Tree(‘-’, new Tree(‘*’, root.getRight(), derive(root.getLeft())), new Tree(‘*’, root.getLeft(), derive(root.getRight())));\newline
+\}\newline
+\end{minipage}
+\\
+\hline
+\raisebox{-35px}{\includegraphics[scale=0.5]{img/9.png}} & 
+\raisebox{-35px}{\includegraphics[scale=0.5]{img/10.png}} & 
+\begin{minipage}{200px}\ \newline
+deriveOpSin(Tree root) \newline \{ \newline
+root.setRoot(‘*’); \newline
+root.setLeft(derive(root.getLeft())); \newline
+root.setRight(new Tree(‘cos’, \newline root.getLeft())); \newline
+\} \newline
+\end{minipage}
+\\
+\hline
+\end{tabular}
+
+\begin{tabular}{|c|c|l|}
+\hline
+\raisebox{-35px}{\includegraphics[scale=0.5]{img/11.png}} & 
+\raisebox{-35px}{\includegraphics[scale=0.5]{img/12.png}} & 
+\begin{minipage}{200px}\ \newline
+deriveOpCos(Tree root)\newline \{ \newline
+root.setRoot(‘*’);\newline
+root.setLeft(- derive(root.getLeft()));\newline
+root.setRight(new Tree(‘sin’, \newline root.getLeft()));\newline
+\}\newline
+\end{minipage}
+\\
+\hline
+\raisebox{-35px}{\includegraphics[scale=0.5]{img/13.png}} & 
+\raisebox{-80px}{\includegraphics[scale=0.5]{img/14.png}} & 
+\begin{minipage}{200px}\ \newline
+deriveOpExp(Tree root)\newline \{ \newline
+root.setRoot(‘*’); \newline
+root.setLeft(root.getRight()); \newline
+root.setRight(‘*’, new Tree(‘exp’, \newline root.getLeft(), new Tree(‘-’, \newline root.getRight(), 1)), \newline derive(root.getLeft())); \newline
+\} \newline
+\end{minipage}
+\\
+\hline
+\end{tabular}
+
 \end{document}
