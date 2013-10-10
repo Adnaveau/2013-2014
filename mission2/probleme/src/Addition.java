@@ -1,5 +1,5 @@
 
-public class Addition implements Node {
+public class Addition implements Node, Operator {
 
 	@Override
 	public FormalExpressionTree derive(FormalExpressionTree left,
@@ -10,8 +10,12 @@ public class Addition implements Node {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-				return null;
+		return "+";
+	}
+
+	@Override
+	public boolean isUnaryOperator() {
+		return false;
 	}
 	
 }

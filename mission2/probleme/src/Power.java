@@ -1,5 +1,5 @@
 
-public class Power implements Node {
+public class Power implements Node, Operator {
 
 	@Override
 	public FormalExpressionTree derive(FormalExpressionTree left,
@@ -10,8 +10,12 @@ public class Power implements Node {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-				return null;
+		return "^";
+	}
+
+	@Override
+	public boolean isUnaryOperator() {
+		return false;
 	}
 	
 }

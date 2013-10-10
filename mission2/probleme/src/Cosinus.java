@@ -1,5 +1,5 @@
 
-public class Cosinus implements Node {
+public class Cosinus implements Node, Operator {
 
 	@Override
 	public FormalExpressionTree derive(FormalExpressionTree left,
@@ -11,7 +11,12 @@ public class Cosinus implements Node {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-				return null;
+		return "cos";
+	}
+
+
+	@Override
+	public boolean isUnaryOperator() {
+		return true;
 	}
 }

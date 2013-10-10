@@ -1,6 +1,13 @@
 
 public class Scalar implements Node {
 
+	private Number value;
+	
+	public Scalar(Number value)
+	{
+		this.value = value;
+	}
+	
 	@Override
 	public FormalExpressionTree derive(FormalExpressionTree left,
 			FormalExpressionTree right) {
@@ -10,8 +17,7 @@ public class Scalar implements Node {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-				return null;
+		return value.toString();
 	}
 	
 }

@@ -1,5 +1,5 @@
 
-public class Sinus implements Node {
+public class Sinus implements Node, Operator {
 
 	@Override
 	public FormalExpressionTree derive(FormalExpressionTree left,
@@ -10,8 +10,12 @@ public class Sinus implements Node {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-				return null;
+		return "sin";
+	}
+
+	@Override
+	public boolean isUnaryOperator() {
+		return true;
 	}
 	
 }
