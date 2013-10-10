@@ -5,6 +5,11 @@ public class FormalExpressionBTree implements FormalExpressionTree {
 	private FormalExpressionTree left;
 	private FormalExpressionTree right;
 	
+	public FormalExpressionBTree(String expr)
+	{
+		
+	}
+	
 	public FormalExpressionBTree(Node root, FormalExpressionTree left, FormalExpressionTree right)
 	{
 		this.root = root;
@@ -13,8 +18,8 @@ public class FormalExpressionBTree implements FormalExpressionTree {
 	}
 	
 	@Override
-	public FormalExpressionTree derivate() {
-		return this.root.derivate(left, right);
+	public FormalExpressionTree derive() {
+		return this.root.derive(left, right);
 	}
 
 	@Override

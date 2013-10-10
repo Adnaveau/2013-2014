@@ -29,21 +29,14 @@ public class FileRW {
 		}
     }
     
-	public String readFile(){
-		String content = "";
-		String lineTMP = "";
-		try {
-			// Replacing new lines by spaces simplifies the scanning process
-			while ((lineTMP = reader.readLine()) != null) content = content + lineTMP + " ";
-		} catch (IOException e) {
-			System.err.println("Error while reading file!");
-			e.printStackTrace();
-		}
-		return content;
+	public BufferedReader getReader()
+	{
+		return reader;
 	}
 	
-	public void writeToFile(String toWrite){
-		writer.println(toWrite);
+	public PrintWriter getWriter()
+	{
+		return writer;
 	}
 	
 	public void close()

@@ -32,7 +32,7 @@ public interface FormalExpressionTree {
    * @post  Une référence à un nouvel arbre représentant la dérivée formelle 
    *        de this est renvoyée. 
    */
-  public FormalExpressionTree derivate();
+  public FormalExpressionTree derive();
   
   public void setLeft(FormalExpressionTree left);
   public void setRight(FormalExpressionTree right);
