@@ -18,4 +18,11 @@ public class Multiplication implements Node, Operator {
 		return false;
 	}
 
+	@Override
+	public FormalExpressionTree clean(FormalExpressionTree left,
+			FormalExpressionTree right) {
+		// TODO Stub de la méthode généré automatiquement
+		return null;
+	}
+
 }
