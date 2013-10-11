@@ -35,10 +35,39 @@ public class FormalExpressionBTree implements FormalExpressionTree {
 				FormalExpressionTree left = op.isUnaryOperator() ? null : (FormalExpressionTree) stack.pop();
 				stack.push(new FormalExpressionBTree(op, left, right));
 			}
-			else if(expr.charAt(0) == 'x')
+			else if(expr.charAt(0) == 'x' || ((expr.startsWith("-x") || expr.startsWith("(-x")) && (stack.isEmpty() || stack.peek() instanceof Operator)))
 			{
+				// Determines if a parenthesis will have to be removed later
+				boolean frontPar = false;
+				if(expr.charAt(0) == '(')
+				{
+					frontPar = true;
+					expr = expr.substring(1);
+				}
+				
+				// Determines if number is negative
+				boolean negative = false; 
+				if(expr.charAt(0) == '-')
+				{
+					negative = true;
+					expr = expr.substring(1);
+				}
+				
 				expr = expr.substring(1);
-				stack.push(new FormalExpressionBTree(new Variable(), null, null));
+				
+				// Removes eventual remaining parenthesis
+				// We look for it before because if the negative number was a term
+				// of an binary operator, it won't have a closing parenthesis at its end
+				if(frontPar && expr.length() > 0 && expr.charAt(0) == ')') expr = expr.substring(1);
+				
+				if(negative)
+				{
+					expr = "(0-x)" + expr;
+				}
+				else
+				{
+					stack.push(new FormalExpressionBTree(new Variable(), null, null));
+				}
 			}
 			else if(Character.isDigit(expr.charAt(0)) || ((expr.charAt(0) == '-' || expr.startsWith("(-")) && (stack.isEmpty() || stack.peek() instanceof Operator)))
 			{
@@ -174,8 +203,11 @@ public class FormalExpressionBTree implements FormalExpressionTree {
 				// If unary operator, we only need parenthesis around the parameters
 				result = root.toString() + "(" + right.toString() + ")";
 			else
+			{
 				// Else we need parenthesis around the whole sub-expression
-				result = "(" + left.toString() + root.toString() + right.toString() + ")";
+				String lStr = left.toString() + root.toString();
+				result = "(" + (lStr.startsWith("0-") ? lStr.substring(1) : lStr)  + right.toString() + ")";
+			}
 		}
 		else
 			// If node is a scalar or the variable, print only parenthesis around negative ones.
