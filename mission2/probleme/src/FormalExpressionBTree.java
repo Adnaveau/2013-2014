@@ -1,6 +1,5 @@
 import java.util.Stack;
 
-
 public class FormalExpressionBTree implements FormalExpressionTree {
 
 	private Node root;
@@ -213,6 +212,14 @@ public class FormalExpressionBTree implements FormalExpressionTree {
 			// If node is a scalar or the variable, print only parenthesis around negative ones.
 			result = root.toString().charAt(0) == '-' ? "(" + root.toString() + ")" : root.toString();
 		return result;
+	}
+
+	@Override
+	public FormalExpressionTree clean() {
+		if(this.root instanceof Operator)
+			return ((Operator) this.root).clean(this.left, this.right);
+		else
+			return this;
 	}
 
 }

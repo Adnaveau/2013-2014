@@ -40,4 +40,5 @@ public interface FormalExpressionTree {
   public FormalExpressionTree getRight();
   public Node getRoot();
   public void setRoot(Node n);
+  public FormalExpressionTree clean();
 } 
