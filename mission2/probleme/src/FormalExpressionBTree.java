@@ -15,7 +15,11 @@ public class FormalExpressionBTree implements FormalExpressionTree {
 		// that we actually have implemented a subtraction operation.
 		while(expr.length() > 0)
 		{
-			if(expr.charAt(0) == '(' && expr.charAt(1) != '-')
+			if(Character.isWhitespace(expr.charAt(0)))
+			{
+				expr = expr.substring(1);
+			}
+			else if(expr.charAt(0) == '(' && expr.charAt(1) != '-')
 			{
 				// We needed to check if char 1 was not '-' to ensure we're not on
 				// a negative number. Opening parenthesis are omitted in the process
